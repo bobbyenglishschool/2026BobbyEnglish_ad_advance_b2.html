@@ -131,6 +131,14 @@
             white-space: nowrap;
         }
 
+        .title-group h1 span.zh-sub-title span.en-sub-tag {
+            font-size: 11px;
+            font-weight: 400;
+            font-style: italic;
+            opacity: 0.95;
+            color: #fef08a;
+        }
+
         .title-group h2 {
             font-size: 11.5px;
             font-weight: 700;
@@ -197,7 +205,7 @@
 
         /* 🎯 中英文字體分離與層級對比樣式 */
         p.paragraph-desc {
-            font-size: 13px; /* 中文字級清晰易讀 */
+            font-size: 13.5px; /* 中文字級清晰易讀 */
             font-weight: 500;
             margin: 0 0 8px 0;
             text-align: justify;
@@ -294,7 +302,7 @@
             color: var(--uci-blue); 
             text-align: center; 
             font-weight: 700;
-            font-size: 12.5px;
+            font-size: 13px;
         }
 
         .center-text { text-align: center !important; font-weight: 700; color: var(--uci-blue); }
@@ -368,9 +376,9 @@
             font-family: inherit;
         }
 
-        /* 🖼️ 頁尾 Advancekids.png 圖檔左右延伸與放大調校 */
+        /* 🖼️ 頁 1 與頁 2 頁尾圖檔容器 */
         .footer-image-box {
-            width: calc(100% + 80px); /* 向左右擴展延伸 */
+            width: calc(100% + 80px);
             margin-left: -40px; 
             margin-top: 8px;
             overflow: hidden;
@@ -380,9 +388,9 @@
         }
 
         .page-footer-img {
-            width: 100%; /* 寬度100%滿版延伸 */
+            width: 100%; 
             max-width: 100%; 
-            max-height: 145px; /* 高度適度放至 145px 展現大氣視覺 */
+            max-height: 145px; 
             object-fit: contain;
             display: block;
             margin: 0 auto;
@@ -390,15 +398,16 @@
             border: none;
         }
 
+        /* 🎯 核心修復：第三頁專屬頁尾容器精準居中，取消偏左推擠負邊距 */
         .last-page-footer-box {
-            width: calc(100% + 80px);
-            margin-left: -40px;
-            margin-top: 8px;
+            width: 100%;
+            margin: 8px auto 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: center;
             gap: 10px; 
+            page-break-inside: avoid;
         }
 
         .join-us-btn-container {
@@ -450,7 +459,7 @@
             }
             table.ad-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .footer-image-box { width: calc(100% + 36mm) !important; margin-left: -18mm !important; }
-            .last-page-footer-box { width: calc(100% + 36mm) !important; margin-left: -18mm !important; }
+            .last-page-footer-box { width: 100% !important; margin: 0 auto !important; }
             .page-footer-img { max-height: 130px !important; }
             .join-us-btn-container { display: none !important; }
             table.ad-table, .info-card, .footer-image-box, .last-page-footer-box {
@@ -470,7 +479,7 @@
             table.ad-table td { min-width: 160px; }
             table.ad-table th { min-width: 95px; }
             .footer-image-box { width: calc(100% + 30px); margin-left: -15px; }
-            .last-page-footer-box { width: calc(100% + 30px); margin-left: -15px; }
+            .last-page-footer-box { width: 100%; margin: 0 auto; }
             .page-footer-img { max-height: 120px; }
         }
     </style>
@@ -683,7 +692,8 @@
             <div class="join-us-btn-container">
                 <img src="Advcnce.png" alt="立即開啟巴比美語進階卓越之門" class="cta-join-us-img" onclick="openDualLinks(event)">
             </div>
-            <div class="footer-image-box" style="margin-top: 0;">
+            <!-- 🎯 第三頁專屬圖檔容器：精準 100% 正中放置 -->
+            <div class="footer-image-box" style="margin-top: 0; width: 100%; margin-left: 0; justify-content: center;">
                 <img src="Advancekids.png" alt="巴比美語學員快樂探究合照" class="page-footer-img">
             </div>
         </div>
