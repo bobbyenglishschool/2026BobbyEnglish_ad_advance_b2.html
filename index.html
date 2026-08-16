@@ -150,7 +150,6 @@
             letter-spacing: 0.8px;
         }
 
-        /* 🎯 校標尺寸微調 */
         .logo-img {
             width: 100%;
             max-width: 130px;
@@ -218,7 +217,6 @@
             margin-bottom: 0;
         }
 
-        /* 英文字級精緻縮小，優雅襯托 */
         .light-en-text {
             font-size: 11px;
             font-weight: 400; 
@@ -272,7 +270,6 @@
             background-color: #ffffff;
         }
 
-        /* 明確設定內部格線與邊界 */
         table.ad-table th, table.ad-table td { 
             border-right: 1px solid #1b3d6d !important;
             border-bottom: 1px solid #1b3d6d !important;
@@ -288,7 +285,6 @@
             padding: 8px 4px !important;
         }
 
-        /* 消除最右側與最底部的重複邊框 */
         table.ad-table th:last-child, table.ad-table td:last-child {
             border-right: none !important;
         }
@@ -429,7 +425,6 @@
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
         }
 
-        /* 🖨️ 列印專用防護罩：只有在「真正列印紙張」時才精準鎖定 A4 尺寸！ */
         @media print {
             body { background-color: #fff; padding: 0; margin: 0; }
             .ad-container { max-width: 100%; width: 100%; box-shadow: none; border-radius: 0; }
@@ -469,7 +464,7 @@
             .page { padding: 20px 15px 15px 15px; min-height: auto; }
             .header-flex-box { padding: 15px 18px; flex-direction: column-reverse; text-align: center; }
             .title-group { text-align: center; width: 100%; }
-            .logo-img { max-width: 110px; }
+            .logo-img { max-width: 110px; margin-bottom: 8px; }
             .description-scroll-box { max-height: 260px; }
             table.ad-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             table.ad-table td { min-width: 160px; }
@@ -505,8 +500,7 @@
                 <p class="paragraph-desc">
                     國中二、三年級的學生，在英語學習上常面臨關鍵的轉折點：單字量逐漸增加，卻缺少在生活中深度探討議題的機會；文法規律雖然理解，但在寫作表達時仍習慣依賴單純的短句。
                 </p>
-                <!-- 🎯 核心修改特區：已精準替換 Joy 指定的英文文案敘述（並自動清理多餘的浮動句點）！ -->
-                <span class="light-en-text">When learning English is no longer just about daily chit-chat, but about organizing thoughts into clear, persuasive writing. Don't worry!</span>
+                <span class="light-en-text">Students in their 8th and 9th grades often reach a critical turning point in English learning. While their vocabulary expands, they rarely have the opportunity to discuss complex topics in depth, and their writing often relies on simple sentences despite understanding grammar rules.</span>
                 
                 <p class="paragraph-desc" style="margin-top: 8px; border-top: 1px dashed var(--border-color); padding-top: 8px;">
                     本課程適合目前就讀國二或國三，在學校基礎課程之外，希望能將英語作為知識理解與深度表達工具的同學。
@@ -516,7 +510,8 @@
                 <p class="paragraph-desc" style="margin-top: 8px; border-top: 1px dashed var(--border-color); padding-top: 8px;">
                     這個階段的學習，我們著重在閱讀視野與語法結構的並進。透過接觸科學、歷史與藝術等跨學科文本，引導同學習慣多角度思考；同時，我們藉由系統化的文法梳理與課堂即席寫作，協助孩子將零碎的短句，逐步鍛鍊為結構嚴謹、具邏輯性的長編段落，讓英語表達從單純的日常對話，內化為清晰的思辨能力。
                 </p>
-                <span class="light-en-text">At this stage, we focus on advancing both reading horizons and grammatical structures simultaneously. By exploring interdisciplinary texts in science, history, and art, we guide students to think from multiple perspectives. Meanwhile, through systematic grammar review and in-class writing, we assist students in developing fragmented sentences into rigorously structured, logical paragraphs, transforming simple conversation into clear, critical expression.</span>
+                <!-- 🎯 核心修改特區：已精準將 don't worry! 改為 Don't worry! (大寫 D) -->
+                <span class="light-en-text">At this stage, we focus on advancing both reading horizons and grammatical structures simultaneously. By exploring interdisciplinary texts in science, history, and art, we guide students to think from multiple perspectives. Meanwhile, through systematic grammar review and in-class writing, we assist students in developing fragmented sentences into rigorously structured, logical paragraphs, transforming simple conversation into clear, critical expression. Don't worry! We walk this journey together with every learner.</span>
             </div>
 
             <h2 class="section-heading" style="margin-top: 8px;">🌐 課程兩大核心主軸 | Two Core Pillars of the Course</h2>
@@ -689,7 +684,6 @@
             <div class="join-us-btn-container">
                 <img src="Advcnce.png" alt="立即開啟巴比美語進階卓越之門" class="cta-join-us-img" onclick="openDualLinks(event)">
             </div>
-            <!-- 🎯 第三頁專屬圖檔容器：精準 100% 正中放置 -->
             <div class="footer-image-box" style="margin-top: 0; width: 100%; margin-left: 0; justify-content: center;">
                 <img src="Advancekids.png" alt="巴比美語學員快樂探究合照" class="page-footer-img">
             </div>
@@ -702,7 +696,6 @@
 function openDualLinks(event) {
     if (event) event.preventDefault();
     
-    // 🎯 Aegis 核心修正：標準化網址，防止被瀏覽器彈跳阻斷並移除結尾多餘斜線
     const mainLink = "https://bobbyenglishschool.github.io/2026BobbyEnglish-Advance-adv_b2.html";
     const contractLink = "https://bobbyenglishschool.github.io/2026BobbyEnglish-Contract-AdvanceB2.html";
     
