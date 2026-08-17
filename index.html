@@ -19,7 +19,7 @@
             --uci-gold: #fecc07; 
             --soft-red: #e74c3c;
             --card-bg: #f8fafc;
-            --border-color: #cbd5e1;
+            --border-color: #1b3d6d; /* 🎯 強制全面為巴比深藍色外框 */
             --line-color: #cbd5e1;
             --text-main: #1e293b;
             --text-sub: #475569;
@@ -177,8 +177,8 @@
         /* 📜 動態捲動卡片樣式 */
         .description-scroll-box {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--uci-blue);
+            border: 1px solid #1b3d6d !important;
+            border-left: 4px solid var(--uci-blue) !important;
             padding: 16px 20px;
             border-radius: 8px;
             margin-bottom: 10px;
@@ -205,7 +205,7 @@
 
         /* 🎯 中英文字體分離與層級對比樣式 */
         p.paragraph-desc {
-            font-size: 13.5px; /* 中文字級清晰易讀 */
+            font-size: 13.5px;
             font-weight: 500;
             margin: 0 0 8px 0;
             text-align: justify;
@@ -247,13 +247,12 @@
             font-weight: 700;
         }
 
-        /* 🎯 避孤晶片：確保標語與單詞最後關鍵詞不單獨換行成單字 */
         .no-orphan {
             display: inline-block;
             white-space: nowrap;
         }
 
-        /* 🛡️ 核心表格全邊框防線與欄位鎖定，徹底防止向右超出！ */
+        /* 🔒 核心表格三大邊框防線：外框與內部單元格強制以 #1b3d6d 實體深藍顯影 */
         .table-container {
             width: 100%;
             margin-top: 8px;
@@ -262,20 +261,20 @@
 
         table.ad-table { 
             width: 100%; 
-            border-collapse: separate; /* 改為 separate 以完整呈現整體外框 */
-            border-spacing: 0;
+            border-collapse: collapse !important;
+            margin-bottom: 0;
             font-size: 12px;
-            table-layout: fixed; /* 嚴格固定欄位寬度，防溢出！ */
+            table-layout: fixed;
             word-wrap: break-word;
-            border: 1px solid var(--border-color) !important; /* 強制整體外框顯影 */
-            border-radius: 6px;
+            border: 1px solid #1b3d6d !important;
+            border-radius: 0px;
             overflow: hidden;
+            background-color: #ffffff;
         }
 
         /* 明確設定內部格線與邊界 */
         table.ad-table th, table.ad-table td { 
-            border-right: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            border: 1px solid #1b3d6d !important;
             padding: 9px 12px; 
             vertical-align: middle; 
             text-align: left; 
@@ -283,22 +282,13 @@
             word-break: break-word;
         }
 
-        /* 🎯 第二欄章節專屬對齊優化：微調內距，讓章節內容向左微移、精準居中不壓右線！ */
         table.ad-table td.col-chapter {
             text-align: center !important;
             padding: 8px 4px !important;
         }
 
-        /* 消除最右側與最底部的重複邊框 */
-        table.ad-table th:last-child, table.ad-table td:last-child {
-            border-right: none;
-        }
-        table.ad-table tr:last-child td {
-            border-bottom: none;
-        }
-
         table.ad-table th { 
-            background-color: #f1f5f9; 
+            background-color: #f0f4f8; 
             color: var(--uci-blue); 
             text-align: center; 
             font-weight: 700;
@@ -313,7 +303,7 @@
 
         .info-card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1px solid #1b3d6d !important;
             padding: 12px 16px;
             border-radius: 6px;
             margin-top: 6px;
@@ -332,7 +322,7 @@
             color: var(--text-sub); 
             display: block; 
             margin-top: 2px; 
-            font-size: 11px; /* 英文說明縮小襯托 */
+            font-size: 11px; 
             font-weight: 400; 
             line-height: 1.4;
             text-align: justify;
@@ -376,7 +366,6 @@
             font-family: inherit;
         }
 
-        /* 🖼️ 頁 1 與頁 2 頁尾圖檔容器 */
         .footer-image-box {
             width: calc(100% + 80px);
             margin-left: -40px; 
@@ -398,16 +387,15 @@
             border: none;
         }
 
-        /* 🎯 核心修復：第三頁專屬頁尾容器精準居中，取消偏左推擠負邊距 */
         .last-page-footer-box {
-            width: 100%;
-            margin: 8px auto 0 auto;
+            width: calc(100% + 80px);
+            margin-left: -40px;
+            margin-top: 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             gap: 10px; 
-            page-break-inside: avoid;
         }
 
         .join-us-btn-container {
@@ -416,7 +404,6 @@
             margin-bottom: 4px;
         }
 
-        /* 🎯 按鈕圖檔尺寸最佳化 */
         .cta-join-us-img {
             width: 100%;
             max-width: 145px;
@@ -435,6 +422,7 @@
 
         /* 🖨️ 列印專用防護罩：只有在「真正列印紙張」時才精準鎖定 A4 尺寸！ */
         @media print {
+            @page { size: A4 portrait; margin: 10mm 15mm; }
             body { background-color: #fff; padding: 0; margin: 0; }
             .ad-container { max-width: 100%; width: 100%; box-shadow: none; border-radius: 0; }
             .page {
@@ -447,17 +435,17 @@
                 padding: 15mm 18mm 0 18mm !important; 
                 margin: 0;
                 border-bottom: none;
-                overflow: hidden !important; /* 列印時鎖定邊界 */
+                overflow: hidden !important;
             }
             .page:last-child { page-break-after: avoid; }
             .description-scroll-box { max-height: none !important; overflow-y: visible !important; border: none !important; padding: 0 !important; }
             .header-flex-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            table.ad-table th, table.ad-table td { 
-                border: 1px solid var(--border-color) !important; 
+            table.ad-table, table.ad-table th, table.ad-table td { 
+                border: 1px solid #1b3d6d !important; 
                 -webkit-print-color-adjust: exact; 
                 print-color-adjust: exact; 
             }
-            table.ad-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            table.ad-table th { background-color: #f0f4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .footer-image-box { width: calc(100% + 36mm) !important; margin-left: -18mm !important; }
             .last-page-footer-box { width: 100% !important; margin: 0 auto !important; }
             .page-footer-img { max-height: 130px !important; }
@@ -647,7 +635,17 @@
                         </tr>
                         <tr>
                             <td style="font-weight: bold;">⏰ 上課時間 | Class Time</td>
-                            <td class="left-align">每週三、五晚上 7:00 p.m. - 9:00 p.m. (每次 2 小時)<br><span class="note">Every Wednesday and Friday 7:00 - 9:00 p.m. (2 hours per lesson)</span></td>
+                            <!-- 🎯 核心 UI 規範 3：幾何 100% 精準居中，格式與報名表/契約書完全一致 -->
+                            <td style="text-align: center; vertical-align: middle;">
+                                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 2px 0;">
+                                    <div style="font-weight:800; color:var(--uci-blue); font-size:13px; line-height:1.2;">
+                                        <span class="no-orphan">每週三、五</span>
+                                    </div>
+                                    <div style="font-weight:700; color:var(--uci-blue); font-size:11.5px; line-height:1.2; margin-top:3px;">
+                                        <span class="no-orphan">7:00 PM - 9:00 PM (2小時/堂)</span>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold;">🔢 總堂數 | Total Lessons</td>
@@ -669,8 +667,9 @@
                             <td class="left-align">
                                 <strong style="color: var(--soft-red); font-size: 14.5px;">新進 B2 生原價：NT$33,160元</strong> <span class="note">(學費 $27,880 + 全套教材 $3,240 + 學雜費 $2,040)</span>
                                 <strong style="color: var(--uci-blue); font-size: 14.5px; display:block; margin-top:2px;">B1 升 B2 生原價：NT$30,420元</strong> <span class="note">(學費 $27,880 + 專屬作業本 $500 + 學雜費 $2,040)</span>
-                                <span class="note" style="margin-top:4px; color:#c00; font-weight:700;">💡 續班與優惠折扣 (新進生 / 升班生)：<br>
-                                • 9折：$29,844元 / $27,378元 &nbsp;|&nbsp; • 85折：$28,186元 / $25,857元 &nbsp;|&nbsp; • 8折：$26,528元 / $24,366元</span>
+                                <!-- 🎯 Aegis 核心修正：四捨五入全項目連動動態計算：新進生 9折 $29,844 / 85折 $28,186 / ✨ 8折 $26,528 ； 升班生 9折 $27,378 / 85折 $25,857 / ✨ 8折 $24,366 -->
+                                <span class="note" style="margin-top:4px; color:#c00; font-weight:700;">💡 全項目動態折扣特惠 (新進生 / 升班生)：<br>
+                                • 9折：$29,844元 / $27,378元 &nbsp;|&nbsp; • 85折：$28,186元 / $25,857元 &nbsp;|&nbsp; • ✨ 8折：$26,528元 / $24,366元</span>
                             </td>
                         </tr>
                     </tbody>
@@ -701,24 +700,26 @@
 
 </div>
 
+<!-- 📡 雙視窗雙開機制，具備 Safari 防阻斷備援機制 -->
 <script>
 function openDualLinks(event) {
     if (event) event.preventDefault();
     
-    // 🎯 Aegis 核心修正：標準化網址，防止被瀏覽器彈跳阻斷並移除結尾多餘斜線
-    const mainLink = "https://bobbyenglishschool.github.io/2026BobbyEnglish-Advance-adv_b2.html";
-    const contractLink = "https://bobbyenglishschool.github.io/2026BobbyEnglish-Contract-AdvanceB2.html";
+    // 🎯 Aegis 核心修正：精準對應 GitHub Pages 發布網址
+    var mainLink = "https://bobbyenglishschool.github.io/2026BobbyEnglish-Advance-adv_b2.html";
+    var contractLink = "https://bobbyenglishschool.github.io/2026BobbyEnglish-Contract-AdvanceB2.html";
     
-    const w1 = window.open(mainLink, "_blank");
+    // 優先開啟主要報名系統
+    var w1 = window.open(mainLink, "_blank");
     
-    try {
-        const w2 = window.open(contractLink, "_blank");
-        if (!w2 || w2.closed || typeof w2.closed === 'undefined') {
-            console.warn("第二個視窗被瀏覽器彈跳攔截，建議提示使用者允許彈跳視窗。");
+    // 平滑延遲開啟第二個契約視窗，避免被行動端防護攔截
+    setTimeout(function() {
+        var w2 = window.open(contractLink, "_blank");
+        if (!w2 || w2.closed || typeof w2.closed == 'undefined') {
+            console.warn("Contract popup blocked. Guidance provided.");
+            alert("✨ 巴比美語溫馨提示：系統已為您開啟 Advance B2 報名表！若未自動開啟定型化契約書，請點擊報名頁面內的「契約審閱連結」即可查閱喔！");
         }
-    } catch (e) {
-        console.error("無法自動開啟第二個視窗:", e);
-    }
+    }, 150);
 }
 </script>
 </body>
